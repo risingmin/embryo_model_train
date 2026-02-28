@@ -34,7 +34,7 @@ print(f"Using device: {DEVICE}")
 weights = models.EfficientNet_V2_S_Weights.DEFAULT
 
 train_tfm = T.Compose([
-    T.Resize((300, 300)),
+    T.Resize((384, 384)),
     T.RandomHorizontalFlip(),
     T.RandomVerticalFlip(),
     T.RandomInvert(p=1.0),            # always invert – matches lab microscope
@@ -44,7 +44,7 @@ train_tfm = T.Compose([
 ])
 
 val_tfm = T.Compose([
-    T.Resize((300, 300)),
+    T.Resize((384, 384)),
     T.RandomInvert(p=1.0),            # always invert – matches lab microscope
     T.ToTensor(),
     T.Normalize(mean=[0.485, 0.456, 0.406],
